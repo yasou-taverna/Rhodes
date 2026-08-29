@@ -1,7 +1,7 @@
-// חשוב: כתובת זהה לזו שמוגדרת ב-SHEETS_URL בתוך index.html
-// וב-appsScriptUrl בתוך booking.html - כולן חייבות להצביע לאותו Web app.
+// כתובת זו היא לשימוש של המערכת לצורך שמירת נתונים ב‑Sheets בתוך dashboard.html
+// וב‑appsScriptUrl בתוך booking.html – כולה חייבת להצביע לאותו Web app.
 const API_URL =
-  'https://script.google.com/macros/s/AKfycbzWGqTeUrCj32kuvpAdwLkWnalFXSD19avA7n9wauLGhTHJdTRN7ErPsYi7DZs8mIrl/exec';
+  'https://script.google.com/macros/s/AKfycbzhteQZHdC6S923mFgl9-aqDSwxaOUMLQRY5SCUaQMAl8fkg7h63H-P23OKLxMdxXqD/exec';
 
 const TOKEN_KEY = 'yasouAdminToken';
 const USER_KEY = 'yasouAdminUser';
@@ -16,7 +16,7 @@ const loginBtn = document.getElementById('loginBtn');
 const loginError = document.getElementById('loginError');
 
 if (sessionStorage.getItem(TOKEN_KEY)) {
-  window.location.replace('index.html');
+  window.location.replace('dashboard.html');
 }
 
 loginBtn?.addEventListener('click', login);
@@ -74,7 +74,7 @@ async function login() {
       result.user || username
     );
 
-    window.location.replace('index.html');
+    window.location.replace('dashboard.html');
 
   } catch (error) {
     console.error('Login error:', error);
