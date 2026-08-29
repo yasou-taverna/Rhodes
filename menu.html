@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="images/icon.ico" rel="icon" type="image/x-icon">
+ <title>תפריט – טברנה יאסו רודוס</title>
+<link href="css/style.css" rel="stylesheet">
+<style>
+.flag {
+	font-size: 20px;
+}
+.container {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 20px;
+}
+input.search {
+	width: 100%;
+	padding: 14px;
+	font-size: 17px;
+	border-radius: 10px;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+	display: none;
+}
+input.search.visible {
+	display: block;
+}
+.category {
+	margin-top: 28px;
+}
+.category h2 {
+	background: #0069a8;
+	color: white;
+	padding: 12px 16px;
+	border-radius: 10px;
+	font-size: 20px;
+	margin-bottom: 12px;
+	display: none;
+}
+.category h2.visible {
+	display: block;
+}
+.menu {
+	display: grid;
+	grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+	gap: 14px;
+}
+.card {
+	background: white;
+	padding: 16px;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+	display: none;
+}
+.card.visible {
+	display: block;
+}
+.card h3 {
+	color: #0069a8;
+	margin-bottom: 6px;
+	font-size: 17px;
+}
+.card .price {
+	font-size: 21px;
+	font-weight: bold;
+	display: block;
+	margin-top: 4px;
+	float: left;
+}
+.card.ltr .price {
+	float: right;
+}
+.card h3 {
+	overflow: hidden;
+}
+.card p {
+	color: #777;
+	font-size: 14px;
+	margin-top: 4px;
+}
+.card.ltr {
+	direction: ltr;
+	text-align: left;
+}
+.fullrow {
+	grid-column: 1/-1;
+}
+footer {
+	background: #003b66;
+	color: white;
+	padding: 20px;
+	text-align: center;
+	margin-top: 40px;
+	font-size: 15px;
+}
+	/* ===========================
+   style.css - קובץ עיצוב משותף לכל 4 הדפים
+   טברנה יאסו רודוס - עיצוב כחול
+=========================== */
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: #f7f7f7;
+	color: #222;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* ===========================
+   HEADER - זהה בכל הדפים
+=========================== */
+header {
+	background: linear-gradient(to bottom, #0069a8, #003b66);
+	color: white;
+	text-align: center;
+	padding: 30px 15px 20px;
+	position: relative;
+}
+
+header h1 {
+	font-size: 40px;
+	letter-spacing: 3px;
+	margin-bottom: 5px;
+}
+
+header p {
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+
+header img {
+	margin-bottom: 8px;
+}
+
+/* כפתור פתיחת תפריט צד */
+.openbtn {
+	font-size: 26px;
+	cursor: pointer;
+	background-color: transparent;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+.openbtn:hover {
+	color: #f7da95;
+}
+
+/* פנל ניווט צד */
+.sidepanel {
+	width: 0;
+	position: fixed;
+	z-index: 100;
+	height: 100%;
+	top: 0;
+	right: 0;
+	background-color: #003b66;
+	overflow-x: hidden;
+	transition: 0.4s;
+	padding-top: 60px;
+}
+
+.sidepanel a {
+	padding: 12px 25px;
+	text-decoration: none;
+	font-size: 22px;
+	color: #ffffff;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidepanel a:hover,
+.sidepanel a.active {
+	color: #f7da95;
+}
+
+.sidepanel .closebtn {
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	font-size: 40px;
+	color: white;
+}
+
+/* מיתוג שפה (בדף התפריט) */
+.lang-switcher {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+	margin-top: 10px;
+}
+
+.lang-btn {
+	background: rgba(255,255,255,0.15);
+	border: 2px solid rgba(255,255,255,0.5);
+	border-radius: 8px;
+	color: white;
+	padding: 6px 12px;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.lang-btn.active {
+	background: white;
+	color: #003b66;
+}
+
+/* ===========================
+   ריספונסיביות משותפת
+=========================== */
+@media (max-width: 640px) {
+	header {
+		padding: 18px 10px;
+	}
+
+	header h1 {
+		font-size: 28px;
+	}
+
+	header p {
+		font-size: 15px;
+	}
+
+	.openbtn {
+		font-size: 22px;
+		top: 14px;
+		right: 14px;
+		padding: 6px 10px;
+	}
+
+	.sidepanel a {
+		font-size: 20px;
+		padding: 10px 20px;
+	}
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+	<button class="openbtn" onclick="openNav()">☰</button> 
+    <img alt="טברנה יאסו רודוס" height="48" src="images/Logo.png" width="200">
+	<p class="hero-subtitle">Kosher Tavern Cuisine</p>
+	<div id="mySidepanel" class="sidepanel">
+		<a class="closebtn" href="javascript:void(0)" onclick="closeNav()">×</a>
+		<a href="https://yasou-taverna.github.io/kosher-restaurant/">דף הבית</a>
+		<a class="active" href="https://yasou-taverna.github.io/kosher-restaurant/">תפריט</a>
+		<a href="https://yasou-taverna.github.io/kosher-restaurant/privacy-policy.html">מדיניות פרטיות</a>
+		<a href="https://yasou-taverna.github.io/kosher-restaurant/Contact-Us.html">צור קשר</a> 
+	    <a href="https://yasou-taverna.github.io/kosher-restaurant/Kosher-Certificate.html">תעודת כשרות</a>
+		<a href="https://yasou-taverna.github.io/kosher-restaurant/Location.html">המיקום שלנו</a>
+		<a href="https://yasou-taverna.github.io/kosher-restaurant/booking.html">הזמנת שולחן</a>
+	</div>
+   <div class="lang-switcher">
+		<button class="lang-btn active" onclick="setLang('he')">
+		<span class="flag">&#x1F1EE;&#x1F1F1;</span> &#x05E2;&#x05D1;&#x05E8;&#x05D9;&#x05EA;
+		</button><button class="lang-btn" onclick="setLang('en')">
+		<span class="flag">&#x1F1EC;&#x1F1E7;</span> English</button>
+		<button class="lang-btn" onclick="setLang('fr')"><span class="flag">&#x1F1EB;&#x1F1F7;</span> 
+		Fran&ccedil;ais</button></div>
+</header>
+<div class="container">
+	<input id="s-he" class="search" onkeyup="doSearch(this.value)" placeholder="חיפוש...">
+	<input id="s-en" class="search" onkeyup="doSearch(this.value)" placeholder="Search dish...">
+	<input id="s-fr" class="search" onkeyup="doSearch(this.value)" placeholder="Rechercher...">
+	<section class="category" data-section="">
+		<h2 data-lang="he">חשוב לדעת</h2>
+		<h2 data-lang="en">Important Information</h2>
+		<h2 data-lang="fr">Informations importantes</h2>
+		<div class="menu">
+			<div class="card fullrow" data-lang="he">
+				<p><b>חשוב לדעת:</b><br><br>1. מינימום הזמנה <b>30€</b> לכל אדם 
+				או ילד משעה <b>20:00</b> בכל ערב בו מתקיים ערב טברנה עם להקה ומוסיקה 
+				יוונית, בערב או בשעות ללא מוסיקה אין מינימום הזמנה.<br><br>2. אין 
+				החלפה או ביטול מנות.<br><br>3. אין להכניס אוכל ושתייה שלא נרכשו 
+				במסעדה מטעמי מס הכנסה ומטעמי כשרות המסעדה בפרט.<br><br>4. הזמנה ותשלום לקטרינג שבת יהיה עד יום חמישי בשעה 17:00
+איסוך המזון יעשה על ידי הלקוח ביום חמישי או שישי בשעה שנקבעה מראש מול המסעדה או בתוספת תשלום במשלוח במונית.<br><br>5. 
+				חובה לעדכן את המלצר על אלרגיות. המסעדה אינה לוקחת אחריות על אלרגיות.<br>
+				<br>6. במסעדה נעשה שימוש בשמן זית ובשמן חמניות.<br><br>7. המחירים 
+				כוללים מע"מ ואינם כוללים שירות.<br><br>8. מנהלת שיווק ורכש: אבישג.<br>
+				<br>9. טלפון לפרטים הזמנות בווואצאפ בלבד: <b>053-2808988</b><br>
+				<br>10. שבירת צלחת תעלה בעלות של <b>2€</b> לצלחת.<br><br>11. שבירת 
+				צלחות אוכל רגילה תעלה בעלות של <b>20€</b> לכל צלחת.</p>
+			</div>
+			<div class="card ltr fullrow" data-lang="en">
+				<p><b>Important to know:</b><br><br>1. Minimum order <b>30€</b> 
+				per person or child from <b>20:00</b> every evening when there is 
+				a tavern evening with a band and Greek music. During hours without 
+				music there is no minimum order.<br><br>2. No exchange or cancellation 
+				of dishes.<br><br>3. Food and drinks not purchased at the restaurant 
+				may not be brought in for income tax and kosher reasons.<br><br>
+				4. Order and payment for Shabbat catering will be by Thursday at 5:00 PM
+The food will be collected by the customer on Thursday or Friday at a pre-arranged time in front of the restaurant or for an additional fee by taxi delivery.<br>
+				<br>5. It is mandatory to inform the waiter of any allergies. The 
+				restaurant does not take responsibility for allergies.<br><br>6. 
+				The restaurant uses olive oil and sunflower oil.<br><br>7. Prices 
+				include VAT and do not include service.<br><br>8. Marketing &amp; 
+				Purchasing Manager: Avishag.<br><br>9. Phone for orders and details 
+				via WhatsApp only: <b>053-2808988</b><br><br>10. Breaking a plate 
+				will cost <b>2€</b> per plate.<br><br>11. Breaking regular dinner 
+				plates will cost <b>20€</b> per plate.</p>
+			</div>
+			<div class="card ltr fullrow" data-lang="fr">
+				<p><b>Important à savoir :</b><br><br>1. Commande minimum <b>30€</b> 
+				par personne ou enfant à partir de <b>20h00</b> les soirs de soirée 
+				taverne avec groupe et musique grecque. En dehors de ces soirées, 
+				pas de minimum.<br><br>2. Pas d'échange ni d'annulation de plats.<br>
+				<br>3. Il est interdit d'apporter de la nourriture ou des boissons 
+				non achetées au restaurant pour des raisons fiscales et de cachérout.<br>
+				<br>4. Les commandes et les paiements pour le service traiteur de Shabbat doivent être effectués avant jeudi 17h00.
+Le client pourra venir chercher son repas jeudi ou vendredi à une heure convenue devant le restaurant, ou se le faire livrer en taxi (avec supplément).<br><br>5. Obligatoire d'informer le serveur de toute 
+				allergie. Le restaurant décline toute responsabilité en cas d'allergie.<br>
+				<br>6. Le restaurant utilise de l'huile d'olive et de l'huile de 
+				tournesol.<br><br>7. Les prix incluent la TVA et n'incluent pas 
+				le service.<br><br>8. Responsable marketing &amp; achats : Avishag.<br>
+				<br>9. Téléphone pour commandes et informations WhatsApp uniquement 
+				: <b>053-2808988</b><br><br>10. Une assiette cassée sera facturée
+				<b>2€</b>.<br><br>11. Les assiettes ordinaires cassées seront facturées
+				<b>20€</b> chacune.</p>
+			</div>
+		</div>
+	</section>
+	<section class="category" data-section="">
+		<h2 data-lang="he">פתיחה</h2>
+		<h2 data-lang="en">Opening</h2>
+		<h2 data-lang="fr">Entrées</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="פיתה יוונית עם ממרח זיתים">
+				<h3>פיתה יוונית עם ממרח זיתים</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="greek pita with olive pâté">
+				<h3>Greek pita with olive pâté</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="pain pita grec avec tapenade d'olives">
+				<h3>Pain pita grec avec tapenade d'olives</h3>
+				<span class="price">10€</span> </div>
+			<div class="card" data-lang="he" data-text="אדממה">
+				<h3>אדממה</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="edamame">
+				<h3>Edamame</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="edamame">
+				<h3>Edamame</h3>
+				<span class="price">10€</span> </div>
+			<div class="card" data-lang="he" data-text="צ'יפס קריספי">
+				<h3>צ'יפס קריספי</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="crispy french fries">
+				<h3>Crispy French fries</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="frites croustillantes">
+				<h3>Frites croustillantes</h3>
+				<span class="price">10€</span> </div>
+			<div class="card" data-lang="he" data-text="פלטת ירקות טריים">
+				<h3>פלטת ירקות טריים</h3>
+				<span class="price">28€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="fresh vegetable plate">
+				<h3>Fresh vegetable plate</h3>
+				<span class="price">28€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="plateau de légumes frais">
+				<h3>Plateau de légumes frais</h3>
+				<span class="price">28€</span> </div>
+			<div class="card" data-lang="he" data-text="צלחת אורז">
+				<h3>צלחת אורז</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="rice plate">
+				<h3>Rice plate</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="assiette de riz">
+				<h3>Assiette de riz</h3>
+				<span class="price">10€</span> </div>
+		</div>
+	</section>
+	<section class="category" data-section="">
+	<h2 data-lang="he">סלטים</h2>
+	<h2 data-lang="en">Salads</h2>
+	<h2 data-lang="fr">Salades</h2>
+	<div class="menu">
+		<!-- ⭐ טחינה בתוספת שתי פיתות ⭐ -->
+		<div class="card" data-lang="he" data-text="טחינה בתוספת שתי פיתות">
+			<h3>טחינה בתוספת שתי פיתות</h3>
+			<span class="price">10€</span> </div>
+		<div class="card ltr" data-lang="en" data-text="tahini with 2 pita breads">
+			<h3>Tahini with 2 pita breads</h3>
+			<span class="price">10€</span> </div>
+		<div class="card ltr" data-lang="fr" data-text="tahini avec 2 pains pita">
+			<h3>Tahini avec 2 pains pita</h3>
+			<span class="price">10€</span> </div>
+		<!-- ⭐ חצילים / חצילים עם טחינה בצד ⭐ -->
+		<div class="card" data-lang="he" data-text="חצילים / חצילים עם טחינה בצד">
+			<h3>חצילים / חצילים עם טחינה בצד</h3>
+			<span class="price">10/13€</span> </div>
+		<div class="card ltr" data-lang="en" data-text="eggplant / eggplant with tahini">
+			<h3>Eggplant / Eggplant with tahini</h3>
+			<span class="price">10/13€</span> </div>
+		<div class="card ltr" data-lang="fr" data-text="aubergines / aubergines avec tahini">
+			<h3>Aubergines / Aubergines avec tahini</h3>
+			<span class="price">10/13€</span> </div>
+		<!-- ⭐ פלפלים חריפים על האש ⭐ -->
+		<div class="card" data-lang="he" data-text="פלפלים חריפים על האש">
+			<h3>פלפלים חריפים על האש</h3>
+			<span class="price">7€</span> </div>
+		<div class="card ltr" data-lang="en" data-text="grilled hot peppers">
+			<h3>Grilled hot peppers</h3>
+			<span class="price">7€</span> </div>
+		<div class="card ltr" data-lang="fr" data-text="piments grillés">
+			<h3>Piments grillés</h3>
+			<span class="price">7€</span> </div>
+		<!-- ⭐ זיתים יווניים ⭐ -->
+		<div class="card" data-lang="he" data-text="זיתים יווניים">
+			<h3>זיתים יווניים</h3>
+			<span class="price">10€</span> </div>
+		<div class="card ltr" data-lang="en" data-text="greek olives">
+			<h3>Greek olives</h3>
+			<span class="price">10€</span> </div>
+		<div class="card ltr" data-lang="fr" data-text="olives grecques">
+			<h3>Olives grecques</h3>
+			<span class="price">10€</span> </div>
+		<!-- ⭐ סלט ירקות קצוץ ⭐ -->
+		<div class="card" data-lang="he" data-text="סלט ירקות קצוץ">
+			<h3>סלט ירקות קצוץ</h3>
+			<span class="price">10€</span> </div>
+		<div class="card ltr" data-lang="en" data-text="chopped vegetable salad">
+			<h3>Chopped vegetable salad</h3>
+			<span class="price">10€</span> </div>
+		<div class="card ltr" data-lang="fr" data-text="salade de légumes hachés">
+			<h3>Salade de légumes hachés</h3>
+			<span class="price">10€</span> </div>
+		<!-- ⭐ סלט יאסו ⭐ -->
+		<!-- ⭐ סלט יאסו ⭐ -->
+		<div class="card" data-lang="he" data-text="סלט יאסו">
+			<h3>סלט יאסו</h3>
+			<span class="price">13€</span> </div>
+		<div class="card ltr" data-lang="en" data-text="Yasou salad">
+			<h3>Yasou salad</h3>
+			<span class="price">13€</span> </div>
+		<div class="card ltr" data-lang="fr" data-text="Salade Yasou">
+			<h3>Salade Yasou</h3>
+			<span class="price">13€</span> </div>
+		<!-- ⭐ סלט יווני טבעוני ⭐ -->
+		<div class="card" data-lang="he" data-text="סלט יווני טבעוני">
+			<h3>סלט יווני טבעוני</h3>
+			<span class="price">28€</span> </div>
+		<div class="card ltr" data-lang="en" data-text="vegan greek salad">
+			<h3>Vegan Greek Salad</h3>
+			<span class="price">28€</span> </div>
+		<div class="card ltr" data-lang="fr" data-text="salade grecque végétalienne">
+			<h3>Salade grecque végétalienne</h3>
+			<span class="price">28€</span> </div>
+		<!-- ⭐ תוספת 2 פיתות⭐ -->
+		<div class="card" data-lang="he" data-text="תוספת 2 פיתות">
+			<h3>תוספת 2 פיתות</h3>
+			<span class="price">3€</span> </div>
+		<div class="card ltr" data-lang="en" data-text="extra two pita breads">
+			<h3>Extra two pita breads</h3>
+			<span class="price">3€</span> </div>
+		<div class="card ltr" data-lang="fr" data-text="2 pains pita supplémentaires">
+			<h3>2 pains pita supplémentaires</h3>
+			<span class="price">3€</span> </div>
+		<div class="card" data-lang="he" data-text="תוספת טחינה / חריף סחוג">
+			<h3>תוספת טחינה / חריף סחוג</h3>
+			<span class="price">3€</span> </div>
+		<div class="card ltr" data-lang="en" data-text="extra tahini / zhug hot sauce">
+			<h3>Extra tahini / Zhug hot sauce</h3>
+			<span class="price">3€</span> </div>
+		<div class="card ltr" data-lang="fr" data-text="tahini / sauce piquante">
+			<h3>Tahini / Sauce piquante</h3>
+			<span class="price">3€</span> </div>
+	</div>
+</section>
+
+	<section class="category" data-section="">
+		<h2 data-lang="he">חומוס</h2>
+		<h2 data-lang="en">Hummus</h2>
+		<h2 data-lang="fr">Houmous</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="חומוס ביתי">
+				<h3>חומוס ביתי</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="home-made hummus">
+				<h3>Home-made hummus</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="houmous maison">
+				<h3>Houmous maison</h3>
+				<span class="price">10€</span> </div>
+			<div class="card" data-lang="he" data-text="חומוס טחינה">
+				<h3>חומוס טחינה</h3>
+				<span class="price">13€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="hummus tahini">
+				<h3>Hummus Tahini</h3>
+				<span class="price">13€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="houmous tahini">
+				<h3>Houmous Tahini</h3>
+				<span class="price">13€</span> </div>
+			<div class="card" data-lang="he" data-text="חומוס פטריות">
+				<h3>חומוס פטריות</h3>
+				<span class="price">15€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="hummus with mushrooms">
+				<h3>Hummus with mushrooms</h3>
+				<span class="price">15€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="houmous aux champignons">
+				<h3>Houmous aux champignons</h3>
+				<span class="price">15€</span> </div>
+			<div class="card" data-lang="he" data-text="חומוס שניצלונים">
+				<h3>חומוס שניצלונים</h3>
+				<span class="price">20€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="hummus with mini schnitzel">
+				<h3>Hummus with mini schnitzel</h3>
+				<span class="price">20€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="houmous mini schnitzel">
+				<h3>Houmous mini schnitzel</h3>
+				<span class="price">20€</span> </div>
+			<div class="card" data-lang="he" data-text="חומוס בשר טחון">
+				<h3>חומוס בשר טחון</h3>
+				<span class="price">20€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="hummus with minced meat">
+				<h3>Hummus with minced meat</h3>
+				<span class="price">20€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="houmous à la viande hachée">
+				<h3>Houmous à la viande hachée</h3>
+				<span class="price">20€</span> </div>
+			<div class="card" data-lang="he" data-text="המנות מגיעות עם שתי פיתות, פפריקה, פטרוזליה ושמן זית">
+				<h3>המנות מגיעות עם שתי פיתות, פפריקה, פטרוזליה ושמן זית</h3>
+			</div>
+			<div class="card ltr" data-lang="en" data-text="served with: two pita breads, sweet paprika, fresh parsley and olive oil">
+				<h3>Served with: two pita breads, sweet paprika, fresh parsley and 
+				olive oil</h3>
+			</div>
+			<div class="card ltr" data-lang="fr" data-text="servi avec : deux pains pita, paprika, persil frais et huile d'olive">
+				<h3>Servi avec : deux pains pita, paprika, persil frais et huile 
+				d'olive</h3>
+			</div>
+		</div>
+	</section>
+	<section class="category" data-section="">
+		<h2 data-lang="he">בשר ועוף</h2>
+		<h2 data-lang="en">Meat &amp; Chicken</h2>
+		<h2 data-lang="fr">Viande &amp; Poulet</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="פרגיות">
+				<h3>פרגיות</h3>
+				<span class="price">28€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="pargit - chicken thighs">
+				<h3>Pargit - chicken thighs</h3>
+				<span class="price">28€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="cuisses de poulet grillées">
+				<h3>Cuisses de poulet grillées</h3>
+				<span class="price">28€</span> </div>
+			<div class="card" data-lang="he" data-text="שניצל">
+				<h3>שניצל</h3>
+				<span class="price">28€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="schnitzel">
+				<h3>Schnitzel</h3>
+				<span class="price">28€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="schnitzel">
+				<h3>Schnitzel</h3>
+				<span class="price">28€</span> </div>
+			<div class="card" data-lang="he" data-text="שניצלונים">
+				<h3>שניצלונים</h3>
+				<span class="price">28€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="mini schnitzel">
+				<h3>Mini schnitzel</h3>
+				<span class="price">28€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="mini schnitzel">
+				<h3>Mini schnitzel</h3>
+				<span class="price">28€</span> </div>
+			<div class="card" data-lang="he" data-text="חזה עוף על האש">
+				<h3>חזה עוף על האש</h3>
+				<span class="price">28€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="grilled chicken breast">
+				<h3>Grilled chicken breast</h3>
+				<span class="price">28€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="blanc de poulet grillé">
+				<h3>Blanc de poulet grillé</h3>
+				<span class="price">28€</span> </div>
+			<div class="card" data-lang="he" data-text="קבב יווני">
+				<h3>קבב יווני</h3>
+				<span class="price">30€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="greek kebab">
+				<h3>Greek kebab</h3>
+				<span class="price">30€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="kebab grec">
+				<h3>Kebab grec</h3>
+				<span class="price">30€</span> </div>
+			<div class="card" data-lang="he" data-text="המבורגר על פיתה יוונית">
+				<h3>המבורגר על פיתה יוונית</h3>
+				<span class="price">30€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="burger on greek pita">
+				<h3>Burger on Greek pita</h3>
+				<span class="price">30€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="burger sur pita grec">
+				<h3>Burger sur pita grec</h3>
+				<span class="price">30€</span> </div>
+			<div class="card" data-lang="he" data-text="כל המנות מגיעות עם אורז לבן">
+				<h3>כל המנות מגיעות עם אורז לבן</h3>
+			</div>
+			<div class="card ltr" data-lang="en" data-text="all main dishes come with white rice">
+				<h3>All main dishes come with white rice</h3>
+			</div>
+			<div class="card ltr" data-lang="fr" data-text="tous les plats sont servis avec du riz blanc">
+				<h3>Tous les plats sont servis avec du riz blanc</h3>
+			</div>
+		</div>
+	</section>
+	<section class="category" data-section="">
+		<h2 data-lang="he">דגים</h2>
+		<h2 data-lang="en">Fish</h2>
+		<h2 data-lang="fr">Poissons</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="דניס / צ'יפורה">
+				<h3>דניס / צ'יפורה</h3>
+				<span class="price">30€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="sea bream - dorade">
+				<h3>Sea bream - Dorade</h3>
+				<span class="price">30€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="dorade">
+				<h3>Dorade</h3>
+				<span class="price">30€</span> </div>
+			<div class="card" data-lang="he" data-text="לברק">
+				<h3>לברק</h3>
+				<span class="price">30€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="sea bass - loup de mer">
+				<h3>Sea bass - Loup de mer</h3>
+				<span class="price">30€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="loup de mer">
+				<h3>Loup de mer</h3>
+				<span class="price">30€</span> </div>
+			<div class="card" data-lang="he" data-text="כל המנות מגיעות עם אורז לבן">
+				<h3>כל המנות מגיעות עם אורז לבן</h3>
+			</div>
+			<div class="card ltr" data-lang="en" data-text="all main dishes come with white rice">
+				<h3>All main dishes come with white rice</h3>
+			</div>
+			<div class="card ltr" data-lang="fr" data-text="tous les plats sont servis avec du riz blanc">
+				<h3>Tous les plats sont servis avec du riz blanc</h3>
+			</div>
+		</div>
+	</section>
+	<section class="category" data-section="">
+		<h2 data-lang="he">טבעוני / צמחוני</h2>
+		<h2 data-lang="en">Vegan / Vegetarian</h2>
+		<h2 data-lang="fr">Végan / Végétarien</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="חביתה + שתי פיתות + קערית סלט">
+				<h3>חביתה + שתי פיתות + קערית סלט</h3>
+				<span class="price">15€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="omelette with salad &amp; pita">
+				<h3>Omelette with salad &amp; pita</h3>
+				<span class="price">15€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="omelette avec salade &amp; pita">
+				<h3>Omelette avec salade &amp; pita</h3>
+				<span class="price">15€</span> </div>
+			<div class="card" data-lang="he" data-text="חביתה עם בצל או פטריות + פיתות + סלט">
+				<h3>חביתה עם בצל או פטריות + פיתות + סלט</h3>
+				<span class="price">18€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="omelette with onion or mushrooms, salad &amp; pita">
+				<h3>Omelette with onion or mushrooms, salad &amp; pita</h3>
+				<span class="price">18€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="omelette aux oignons ou champignons">
+				<h3>Omelette aux oignons ou champignons</h3>
+				<span class="price">18€</span> </div>
+			<div class="card" data-lang="he" data-text="סלט יווני עם גבינה טבעונית + שתי פיתות">
+				<h3>סלט יווני עם גבינה טבעונית + שתי פיתות</h3>
+				<span class="price">28€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="greek salad (vegan cheese) with two pita breads">
+				<h3>Greek salad (vegan cheese) with two pita breads</h3>
+				<span class="price">28€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="salade grecque (fromage vegan) avec deux pains pita">
+				<h3>Salade grecque (fromage vegan) avec deux pains pita</h3>
+				<span class="price">28€</span> </div>
+		</div>
+	</section>
+	<section class="category" data-section="">
+		<h2 data-lang="he">שתייה קלה</h2>
+		<h2 data-lang="en">Soft Drinks</h2>
+		<h2 data-lang="fr">Boissons sans alcool</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="מים / סודה">
+				<h3>מים / סודה</h3>
+				<span class="price">4€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="water / soda">
+				<h3>Water / Soda</h3>
+				<span class="price">4€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="eau / soda">
+				<h3>Eau / Soda</h3>
+				<span class="price">4€</span> </div>
+			<div class="card" data-lang="he" data-text="קולה / זירו">
+				<h3>קולה / זירו</h3>
+				<span class="price">4€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="cola / zero">
+				<h3>Cola / Zero</h3>
+				<span class="price">4€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="cola / zéro">
+				<h3>Cola / Zéro</h3>
+				<span class="price">4€</span> </div>
+			<div class="card" data-lang="he" data-text="ספרייט / זירו">
+				<h3>ספרייט / זירו</h3>
+				<span class="price">4€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="sprite / zero">
+				<h3>Sprite / Zero</h3>
+				<span class="price">4€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="sprite / zéro">
+				<h3>Sprite / Zéro</h3>
+				<span class="price">4€</span> </div>
+			<div class="card" data-lang="he" data-text="פנטה תפוזים">
+				<h3>פנטה תפוזים</h3>
+				<span class="price">4€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="fanta orange">
+				<h3>Fanta Orange</h3>
+				<span class="price">4€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="fanta orange">
+				<h3>Fanta Orange</h3>
+				<span class="price">4€</span> </div>
+			<div class="card" data-lang="he" data-text="אייס תה אפרסק">
+				<h3>אייס תה אפרסק</h3>
+				<span class="price">4€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="ice tea peach">
+				<h3>Ice Tea Peach</h3>
+				<span class="price">4€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="thé glacé pêche">
+				<h3>Ice Tea pêche</h3>
+				<span class="price">4€</span> </div>
+			<div class="card" data-lang="he" data-text="מיצים: תפוזים / לימונדה / דובדבן">
+				<h3>מיצים: תפוזים / לימונדה / דובדבן</h3>
+				<span class="price">4€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="juices: orange / lemonade / cherry">
+				<h3>Juices: Orange / Lemonade / Cherry</h3>
+				<span class="price">4€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="jus: orange / citronnade / cerise">
+				<h3>Jus: Orange / Citronnade / Cerise</h3>
+				<span class="price">4€</span> </div>
+			<div class="card" data-lang="he" data-text="משקה אנרגיה">
+				<h3>משקה אנרגיה</h3>
+				<span class="price">8€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="energy drink">
+				<h3>Energy drink</h3>
+				<span class="price">8€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="boisson énergisante">
+				<h3>Boisson énergisante</h3>
+				<span class="price">8€</span> </div>
+		</div>
+	</section>
+	<section class="category" data-section="">
+		<h2 data-lang="he">בירה</h2>
+		<h2 data-lang="en">Beer</h2>
+		<h2 data-lang="fr">Bière</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="הייניקן">
+				<h3>הייניקן</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="heineken">
+				<h3>Heineken</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="heineken">
+				<h3>Heineken</h3>
+				<span class="price">10€</span> </div>
+			<div class="card" data-lang="he" data-text="קרלסברג">
+				<h3>קרלסברג</h3>
+				<span class="price">12€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="carlsberg">
+				<h3>Carlsberg</h3>
+				<span class="price">12€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="carlsberg">
+				<h3>Carlsberg</h3>
+				<span class="price">12€</span> </div>
+			<div class="card" data-lang="he" data-text="קורונה">
+				<h3>קורונה</h3>
+				<span class="price">13€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="corona">
+				<h3>Corona</h3>
+				<span class="price">13€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="corona">
+				<h3>Corona</h3>
+				<span class="price">13€</span> </div>
+		</div>
+	</section>
+	<section class="category" data-section="">
+		<h2 data-lang="he">קוקטיילים</h2>
+		<h2 data-lang="en">Cocktails</h2>
+		<h2 data-lang="fr">Cocktails</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="יאסו קוקטייל אוזו">
+				<h3>יאסו קוקטייל אוזו</h3>
+				<span class="price">15€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="yasou ouzo cocktail">
+				<h3>Yasou Ouzo Cocktail</h3>
+				<span class="price">15€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="cocktail yasou ouzo">
+				<h3>Cocktail Yasou Ouzo</h3>
+				<span class="price">15€</span> </div>
+			<div class="card" data-lang="he" data-text="מיקס פירות ללא אלכוהול">
+				<h3>מיקס פירות ללא אלכוהול</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="non-alcoholic fruit mix">
+				<h3>Non-alcoholic fruit mix</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="mix de fruits sans alcool">
+				<h3>Mix de fruits sans alcool</h3>
+				<span class="price">10€</span> </div>
+		</div>
+	</section>
+	<section class="category" data-section="">
+		<h2 data-lang="he">אוזו</h2>
+		<h2 data-lang="en">Ouzo</h2>
+		<h2 data-lang="fr">Ouzo</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="פלומרי">
+				<h3>פלומרי</h3>
+				<span class="price">12 / 120€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="plomari">
+				<h3>Plomari</h3>
+				<span class="price">12 / 120€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="plomari">
+				<h3>Plomari</h3>
+				<span class="price">12 / 120€</span> </div>
+			<div class="card" data-lang="he" data-text="אוזו 12">
+				<h3>אוזו 12</h3>
+				<span class="price">12 / 120€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="ouzo 12">
+				<h3>Ouzo 12</h3>
+				<span class="price">12 / 120€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="ouzo 12">
+				<h3>Ouzo 12</h3>
+				<span class="price">12 / 120€</span> </div>
+			<div class="card" data-lang="he" data-text="אוזו 200 מ" ל"="">
+				<h3>אוזו 200 מ"ל</h3>
+				<span class="price">30€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="ouzo 200ml">
+				<h3>Ouzo 200ml</h3>
+				<span class="price">30€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="ouzo 200ml">
+				<h3>Ouzo 200ml</h3>
+				<span class="price">30€</span> </div>
+		</div>
+	</section>
+	<section class="category" data-section="">
+		<h2 data-lang="he">וויסקי</h2>
+		<h2 data-lang="en">Whiskey</h2>
+		<h2 data-lang="fr">Whisky</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="ג'יימסון">
+				<h3>ג'יימסון</h3>
+				<span class="price">15 / 180€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="jameson">
+				<h3>Jameson</h3>
+				<span class="price">15 / 180€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="jameson">
+				<h3>Jameson</h3>
+				<span class="price">15 / 180€</span> </div>
+			<div class="card" data-lang="he" data-text="ג'ק דניאל">
+				<h3>ג'ק דניאל</h3>
+				<span class="price">15 / 180€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="jack daniel's">
+				<h3>Jack Daniel's</h3>
+				<span class="price">15 / 180€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="jack daniel's">
+				<h3>Jack Daniel's</h3>
+				<span class="price">15 / 180€</span> </div>
+			<div class="card" data-lang="he" data-text="שיבאס">
+				<h3>שיבאס</h3>
+				<span class="price">13 / 150€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="chivas">
+				<h3>Chivas</h3>
+				<span class="price">13 / 150€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="chivas">
+				<h3>Chivas</h3>
+				<span class="price">13 / 150€</span> </div>
+			<div class="card" data-lang="he" data-text="בלאק לייבל">
+				<h3>בלאק לייבל</h3>
+				<span class="price">15 / 200€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="black label">
+				<h3>Black Label</h3>
+				<span class="price">15 / 200€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="black label">
+				<h3>Black Label</h3>
+				<span class="price">15 / 200€</span> </div>
+		</div>
+	</section>
+	<section class="category" data-section="">
+		<h2 data-lang="he">וודקה</h2>
+		<h2 data-lang="en">Vodka</h2>
+		<h2 data-lang="fr">Vodka</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="סטולי">
+				<h3>סטולי</h3>
+				<span class="price">13 / 130€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="stoli">
+				<h3>Stoli</h3>
+				<span class="price">13 / 130€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="stoli">
+				<h3>Stoli</h3>
+				<span class="price">13 / 130€</span> </div>
+			<div class="card" data-lang="he" data-text="פילנדיה">
+				<h3>פילנדיה</h3>
+				<span class="price">13 / 130€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="finlandia">
+				<h3>Finlandia</h3>
+				<span class="price">13 / 130€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="finlandia">
+				<h3>Finlandia</h3>
+				<span class="price">13 / 130€</span> </div>
+			<div class="card" data-lang="he" data-text="גריי גוס">
+				<h3>גריי גוס</h3>
+				<span class="price">15 / 200€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="grey goose">
+				<h3>Grey Goose</h3>
+				<span class="price">15 / 200€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="grey goose">
+				<h3>Grey Goose</h3>
+				<span class="price">15 / 200€</span> </div>
+		</div>
+	</section>
+	
+	<section class="category" data-section="">
+		<h2 data-lang="he">נרגילה</h2>
+		<h2 data-lang="en">Nargilla</h2>
+		<h2 data-lang="fr">Narguilé</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="נרגילה: תפוח / אבטיח / נענע">
+				<h3>נרגילה: תפוח / אבטיח / נענע</h3>
+				<span class="price">30€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="nargilla: apple / watermelon / mint">
+				<h3>Nargilla: Apple / Watermelon / Mint</h3>
+				<span class="price">30€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="narguilé: pomme / pastèque / menthe">
+				<h3>Narguilé: Pomme / Pastèque / Menthe</h3>
+				<span class="price">30€</span> </div>
+			<div class="card" data-lang="he" data-text="החלפת ראש + גחל חדש">
+				<h3>החלפת ראש + גחל חדש</h3>
+				<span class="price">15€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="refill head + new coal">
+				<h3>Refill head + new coal</h3>
+				<span class="price">15€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="recharge + nouveau charbon">
+				<h3>Recharge + nouveau charbon</h3>
+				<span class="price">15€</span> </div>
+		</div>
+	</section>
+	<!-- קינוח -->
+	<section class="category" data-section="">
+		<h2 data-lang="he">קינוח</h2>
+		<h2 data-lang="en">Dessert</h2>
+		<h2 data-lang="fr">Dessert</h2>
+		<div class="menu">
+			<div class="card" data-lang="he" data-text="שאל את המלצר על קינוח היום!">
+				<h3>שאל את המלצר על קינוח היום!</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="en" data-text="ask the waiter for the dessert of the day!">
+				<h3>Ask the waiter for the dessert of the day!</h3>
+				<span class="price">10€</span> </div>
+			<div class="card ltr" data-lang="fr" data-text="demandez au serveur le dessert du jour !">
+				<h3>Demandez au serveur le dessert du jour !</h3>
+				<span class="price">10€</span> </div>
+		</div>
+	</section>
+	<!-- תפריט שבת -->
+	<section class="category" data-section="">
+    <h2 data-lang="he" class=" visible">תפריט שבת</h2>
+    <h2 data-lang="en" class="">Shabbat Menu</h2>
+    <h2 data-lang="fr" class="">Menu Shabbat</h2>
+    <div class="menu visible" data-lang="he">
+      <div class="card visible" data-lang="he">
+        <h3>ארוחת ערב שבת לאדם יחיד</h3>
+        <p>2 פיתות יווניות / לחמניות שומשום<br>4 סוגי סלטים (חומוס, טחינה, כרוב, זיתים)<br>מנת דג דניס בתנור<br>מנת כרעיים או פרגית בתוספת אורז לבן</p>
+        <span class="price">75€</span>
+      </div>
+      <div class="card visible" data-lang="he">
+        <h3>ארוחת ערב שבת לזוג</h3>
+        <p>4 פיתות יווניות / לחמניות שומשום<br>4 סוגי סלטים (חומוס, טחינה, כרוב, זיתים)<br>שתי מנות דג דניס בתנור<br>שתי מנות כרעיים או פרגית בתוספת אורז לבן</p>
+        <span class="price">150€</span>
+      </div>
+      <div class="card visible" data-lang="he">
+        <h3>ארוחת ערב שבת פרמיום לזוג</h3>
+        <p>בקבוק יין לקידוש<br>4 פיתות יווניות / לחמניות שומשום<br>4 סוגי סלטים (חומוס, טחינה, כרוב, זיתים)<br>שתי מנות דג דניס בתנור<br>שתי מנות כרעיים או פרגית בתוספת אורז לבן</p>
+        <span class="price">230€</span>
+      </div>
+      <div class="card visible" data-lang="he">
+        <h3>ארוחת ערב שישי או שבת בבוקר לאדם יחיד</h3>
+        <p>מנה אחת לבחירה:<br>כרעיים בתנור / פרגית / שניצל עוף / דג דניס<br>בתוספת אורז לבן</p>
+        <span class="price">75€</span>
+      </div>
+      <div class="card visible" data-lang="he">
+        <h3>ספיישל שבת</h3>
+        <p>בקבוק יין - <b>80€</b><br>זוג חלות - <b>25€</b><br>פלטה לשבת להשכרה - <b>30€</b><br>פקדון <b>100€</b> שמוחזר בהחזרת הפלטה<br>יום שישי מנת שניצל בלחמניה לקחת - <b>15€</b></p>
+      </div>
+    </div>
+    <div class="menu" data-lang="en" style="direction:ltr;text-align:left">
+      <div class="card ltr" data-lang="en">
+        <h3>Shabbat dinner for one person</h3>
+        <p>2 Greek pitas / sesame rolls<br>4 types of salads (hummus, tahini, cabbage, olives)<br>A dish of sea bream in the oven<br>A dish of chicken thighs or chicken with white rice</p>
+        <span class="price">75€</span>
+      </div>
+      <div class="card ltr" data-lang="en">
+        <h3>Shabbat dinner for a couple</h3>
+        <p>4 Greek pitas / sesame rolls<br>4 types of salads (hummus, tahini, cabbage, olives)<br>Two dishes of baked sea bream<br>Two servings of chicken thighs or grilled chicken breast with white rice</p>
+        <span class="price">150€</span>
+      </div>
+      <div class="card ltr" data-lang="en">
+        <h3>Premium Shabbat Dinner for Two</h3>
+        <p>A bottle of wine for Kiddush<br>4 Greek pitas / sesame rolls<br>4 types of salads (hummus, tahini, cabbage, olives)<br>Two dishes of baked sea bream<br>Two servings of chicken thighs or grilled chicken breast with white rice</p>
+        <span class="price">230€</span>
+      </div>
+      <div class="card ltr" data-lang="en">
+        <h3>Friday or Shabbat morning dinner per person</h3>
+        <p>One dish to choose from:<br>Oven-baked chicken thighs / chicken / chicken schnitzel / sea bream<br>With white rice</p>
+        <span class="price">75€</span>
+      </div>
+      <div class="card ltr" data-lang="en">
+        <h3>Shabbat Special</h3>
+        <p>Bottle of wine - <b>80€</b><br>Pair of challahs - <b>25€</b><br>Shabbat platter for rent - <b>30€</b><br>Deposit <b>100€</b> refundable upon return of platter<br>Friday schnitzel on a bun to take away - <b>15€</b></p>
+      </div>
+    </div>
+    <div class="menu" data-lang="fr" style="direction:ltr;text-align:left">
+      <div class="card ltr" data-lang="fr">
+        <h3>Dîner du Shabbat pour une personne</h3>
+        <p>2 pitas grecques / petits pains au sésame<br>4 types de salades (houmous, tahini, chou, olives)<br>Un plat de dorade au four<br>Un plat de cuisses de poulet ou poulet grillé avec riz blanc</p>
+        <span class="price">75€</span>
+      </div>
+      <div class="card ltr" data-lang="fr">
+        <h3>Dîner du Shabbat pour deux</h3>
+        <p>4 pitas grecques / petits pains au sésame<br>4 types de salades (houmous, tahini, chou, olives)<br>Deux plats de dorade au four<br>Deux portions de cuisses de poulet ou poulet grillé avec riz blanc</p>
+        <span class="price">150€</span>
+      </div>
+      <div class="card ltr" data-lang="fr">
+        <h3>Dîner du Shabbat Premium pour deux</h3>
+        <p>Une bouteille de vin pour le Kiddoush<br>4 pitas grecques / petits pains au sésame<br>4 types de salades (houmous, tahini, chou, olives)<br>Deux plats de dorade au four<br>Deux portions de cuisses de poulet ou poulet grillé avec riz blanc</p>
+        <span class="price">230€</span>
+      </div>
+      <div class="card ltr" data-lang="fr">
+        <h3>Dîner vendredi ou matin du Shabbat par personne</h3>
+        <p>Un plat au choix :<br>Cuisses de poulet au four / poulet / schnitzel / dorade<br>Avec riz blanc</p>
+        <span class="price">75€</span>
+      </div>
+      <div class="card ltr" data-lang="fr">
+        <h3>Spécial Shabbat</h3>
+        <p>Bouteille de vin - <b>80€</b><br>Paire de challot - <b>25€</b><br>Plateau du Shabbat à louer - <b>30€</b><br>Dépôt <b>100€</b> remboursé au retour du plateau<br>Vendredi schnitzel en bun à emporter - <b>15€</b></p>
+      </div>
+    </div>
+  </section>
+</div>
+<footer>
+	Yasou Taverna Rhodes &copy; 2026</footer>
+<script>
+var currentLang = 'he';
+
+function setLang(lang) {
+  currentLang = lang;
+  
+  // direction
+  document.body.style.direction = lang === 'he' ? 'rtl' : 'ltr';
+  
+  // buttons
+  var btns = document.querySelectorAll('.lang-btn');
+  btns[0].className = 'lang-btn' + (lang==='he' ? ' active' : '');
+  btns[1].className = 'lang-btn' + (lang==='en' ? ' active' : '');
+  btns[2].className = 'lang-btn' + (lang==='fr' ? ' active' : '');
+  
+  // search boxes
+  var searches = document.querySelectorAll('input.search');
+  for(var i=0; i<searches.length; i++){
+    var id = searches[i].id;
+    searches[i].className = 'search' + (id === 's-'+lang ? ' visible' : '');
+    searches[i].value = '';
+  }
+  
+  // all lang elements
+  var els = document.querySelectorAll('[data-lang]');
+  for(var i=0; i<els.length; i++){
+    els[i].className = els[i].className.replace(' visible','');
+    if(els[i].getAttribute('data-lang') === lang){
+      els[i].className += ' visible';
+    }
+  }
+}
+
+function doSearch(val) {
+  val = val.toLowerCase();
+  var cards = document.querySelectorAll('.card[data-lang="'+currentLang+'"]');
+  for(var i=0; i<cards.length; i++){
+    var text = cards[i].getAttribute('data-text') || cards[i].innerText.toLowerCase();
+    cards[i].style.display = (!val || text.indexOf(val) > -1) ? '' : 'none';
+  }
+}
+
+// init
+setLang('he');
+</script>
+<script>
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
+</script>
+<script src="js/faq-data.js"></script>	
+<script src="js/chatbot.js"></script
+</body>
+
+</html>
