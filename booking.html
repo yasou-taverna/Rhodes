@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>הזמנת שולחן | Yasou Taverna</title>
-<link rel="icon" type="image/x-icon" href="images/icon.ico">
+<link rel="icon" type="image/x-icon" href="assets/images/icon.ico">
 <style>
 * {
   box-sizing: border-box;
@@ -15,7 +15,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: #eaf2f8;
-  background-image: url("images/bg-pattern.min.svg");
+  background-image: url("assets/images/bg-pattern.min.svg");
   background-size: 420px auto;
   background-repeat: repeat;
   background-blend-mode: soft-light;
@@ -28,7 +28,6 @@ body {
   border-bottom: 3px solid #faf5ea;
   padding: 8px 20px 8px;
   text-align: center;
-  position: relative;
 }
 
 .hero-logo {
@@ -45,57 +44,6 @@ body {
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.3px;
-}
-
-.openbtn {
-  font-size: 26px;
-  cursor: pointer;
-  background-color: transparent;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  position: absolute;
-  top: 14px;
-  right: 20px;
-}
-
-.openbtn:hover {
-  color: #f7da95;
-}
-
-.sidepanel {
-  width: 0;
-  position: fixed;
-  z-index: 100;
-  height: 100%;
-  top: 0;
-  right: 0;
-  background-color: #003b66;
-  overflow-x: hidden;
-  transition: 0.4s;
-  padding-top: 60px;
-}
-
-.sidepanel a {
-  padding: 12px 25px;
-  text-decoration: none;
-  font-size: 22px;
-  color: #ffffff;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidepanel a:hover,
-.sidepanel a.active {
-  color: #f7da95;
-}
-
-.sidepanel .closebtn {
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  font-size: 40px;
-  color: white;
 }
 
 .wrap {
@@ -363,18 +311,6 @@ textarea:focus {
     font-size: 14px;
   }
 
-  .openbtn {
-    font-size: 22px;
-    top: 10px;
-    right: 12px;
-    padding: 6px 10px;
-  }
-
-  .sidepanel a {
-    font-size: 20px;
-    padding: 10px 20px;
-  }
-
   .wrap {
     margin-top: 12px;
   }
@@ -384,17 +320,11 @@ textarea:focus {
 
 <body>
 <header class="hero">
-    <div id="mySidepanel" class="sidepanel">
-		<a class="closebtn" href="javascript:void(0)" onclick="closeNav()">×</a>
-		<a class="active" href="https://yasou-taverna.github.io/Rhodes/">דף הבית</a>
-		<a href="https://yasou-taverna.github.io/Rhodes/menu.html">תפריט</a>
-		<a href="https://yasou-taverna.github.io/Rhodes/privacy-policy.html">מדיניות פרטיות</a>
-		<a href="https://yasou-taverna.github.io/Rhodes/Contact-Us.html">צור קשר</a> 
-	    <a href="https://yasou-taverna.github.io/Rhodes/Kosher-Certificate.html">תעודת כשרות</a>
-		<a href="https://yasou-taverna.github.io/Rhodes/Location.html">המיקום שלנו</a>
-		<a href="https://yasou-taverna.github.io/Rhodes/booking.html">הזמנת שולחן</a>
-		<a href="https://yasou-taverna.github.io/Rhodes/Gallery.html">גלריה</a>
-	</div>
+    <img src="assets/images/logo.png" alt="YASOU" class="hero-logo">
+
+    <p class="hero-subtitle">
+        הזמנת מקום מראש
+    </p>
 </header>
 
 <main class="wrap">
@@ -516,7 +446,7 @@ textarea:focus {
 
 <script>
   window.YASOU_CONFIG = {
-    appsScriptUrl: "https://script.google.com/macros/s/AKfycbzhteQZHdC6S923mFgl9-aqDSwxaOUMLQRY5SCUaQMAl8fkg7h63H-P23OKLxMdxXqD/exec",
+    appsScriptUrl: "https://script.google.com/macros/s/AKfycbzWGqTeUrCj32kuvpAdwLkWnalFXSD19avA7n9wauLGhTHJdTRN7ErPsYi7DZs8mIrl/exec",
     depositPerGuest: 100
   };
 </script>
@@ -1012,16 +942,5 @@ function showError(element, message) {
 
 init();
 </script>
-<script>
-function openNav() {
-  document.getElementById("mySidepanel").style.width = "250px";
-}
-
-function closeNav() {
-  document.getElementById("mySidepanel").style.width = "0";
-}
-</script>
-<script src="js/faq-data.js"></script>	
-<script src="js/chatbot.js"></script	
 </body>
 </html>
